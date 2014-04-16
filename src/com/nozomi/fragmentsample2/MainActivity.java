@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.widget.DrawerLayout;
 
 public class MainActivity extends ActionBarActivity implements
@@ -67,6 +68,26 @@ public class MainActivity extends ActionBarActivity implements
 			viewPager.setAdapter(pagerAdapter);
 			viewPager.setCurrentItem(0);
 			actionBar.setTitle(titleArray[0]);
+			viewPager.setOnPageChangeListener(new OnPageChangeListener() {
+
+				@Override
+				public void onPageSelected(int position) {
+
+					actionBar.setTitle(titleArray[position]);
+				}
+
+				@Override
+				public void onPageScrolled(int position, float positionOffset,
+						int positionOffsetPixels) {
+
+				}
+
+				@Override
+				public void onPageScrollStateChanged(int state) {
+
+				}
+			});
+
 			PagerTabStrip pagerTabStrip = (PagerTabStrip) findViewById(R.id.pagerTabStrip);
 
 			pagerTabStrip.setDrawFullUnderline(true);
@@ -103,7 +124,7 @@ public class MainActivity extends ActionBarActivity implements
 			Toast.makeText(this, "action_settings", Toast.LENGTH_SHORT).show();
 			return true;
 		} else if (id == R.id.action_change) {
-			Toast.makeText(this, "action_change", Toast.LENGTH_SHORT).show();
+
 			isDrawer = !isDrawer;
 			SharedPreferences sp = PreferenceManager
 					.getDefaultSharedPreferences(this);
