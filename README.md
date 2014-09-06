@@ -1,7 +1,7 @@
 FragmentSample2
 ===============
 
-new FragmentSample
+new FragmentSample.support 2 ways to control fragment:viewpager and navigation drawer.
 
 edit from [viper4android_fx][1]
 
